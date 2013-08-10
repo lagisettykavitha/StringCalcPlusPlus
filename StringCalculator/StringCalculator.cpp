@@ -33,9 +33,9 @@ void add_if_valid(vector<int> &numbers, string number_string) {
 }
 
 vector<int> get_numbers(const string &input) {
-	vector<int> numbers;
 	regex numbers_only("(-?\\d+)+");
 
+	vector<int> numbers;
 	for_each(sregex_token_iterator(input.begin(), input.end(), numbers_only),
 				sregex_token_iterator(),
 				[&numbers](string s) { add_if_valid(numbers, s); });

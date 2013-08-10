@@ -67,6 +67,27 @@ Describe(string_calculator_add) {
 			Assert::That(calculator.Add("42,1001,3"), Equals(45));
 		}
 	};
+
+	Describe(when_passed_multicharacter_delimiter) {
+		It(uses_that_delimiter_to_sum_values) {
+			StringCalculator calculator;
+			Assert::That(calculator.Add("//[***]\n8***2***3"), Equals(13));
+		}
+	};
+
+	Describe(when_passed_multiple_delimiters) {
+		It(sums_on_each_delimiter) {
+			StringCalculator calculator;
+			Assert::That(calculator.Add("//[*][%]\n4*2%3"), Equals(9));
+		}
+	};
+
+	Describe(when_passed_multiple_multicharacter_delimiters) {
+		It(sums_on_each_delimiter) {
+			StringCalculator calculator;
+			Assert::That(calculator.Add("//[**][%^]\n4**1%^9"), Equals(14));
+		}
+	};
 };
 
 
