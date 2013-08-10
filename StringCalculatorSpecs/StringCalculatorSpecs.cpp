@@ -60,6 +60,13 @@ Describe(string_calculator_add) {
 			Assert::That(LastException<invalid_argument>().what(), Equals("Negatives not allowed: -2,-4"));
 		}
 	};
+
+	Describe(when_passed_numbers_over_1000) {
+		It(ignores_them) {
+			StringCalculator calculator;
+			Assert::That(calculator.Add("42,1001,3"), Equals(45));
+		}
+	};
 };
 
 
